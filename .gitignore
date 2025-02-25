@@ -61,3 +61,23 @@ phpstan.neon
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
+# Ignorer les dépendances PHP
+vendor/
+var/
+
+# Ignorer les fichiers de configuration sensibles
+.env
+.env.local
+.env.*.local
+
+# Ignorer les logs et caches
+logs/
+cache/
+
+# Ignorer les fichiers générés
+public/media/
+public/uploads/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
