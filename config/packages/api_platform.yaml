@@ -1,10 +1,26 @@
 api_platform:
+    title: 'Sylius API'
+    description: 'API de Sylius pour le e-commerce'
+    version: '1.0.0'
+    enable_swagger_ui: true
+    enable_re_doc: true
+    enable_docs: true
+    formats:
+        jsonld: ['application/ld+json']
+        json: ['application/json']
+        html: ['text/html']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    collection:
+        pagination:
+            enabled: true
+            enabled_parameter_name: 'pagination'
+            items_per_page_parameter_name: 'itemsPerPage'
+            page_parameter_name: 'page'
+            partial_parameter_name: 'partial'
+
     mapping:
         paths:
             - '%kernel.project_dir%/config/api_platform'
             - '%kernel.project_dir%/src/Entity'
             - '%kernel.project_dir%/src/ApiResource'
-    patch_formats:
-        json: ['application/merge-patch+json']
-    swagger:
-        versions: [3]

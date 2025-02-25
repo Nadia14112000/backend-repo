@@ -1,6 +1,8 @@
 services:
     php:
         image: ghcr.io/sylius/sylius-php:8.3-alpine
+        networks:
+            - sylius_network
     mysql:
         image: mysql:8.4
         platform: linux/amd64
@@ -13,8 +15,18 @@ services:
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
         cap_add:
             - SYS_NICE # prevent "mbind: Operation not permitted" errors
+        networks:
+            - sylius_network
     nginx:
         image: ghcr.io/sylius/sylius-nginx:latest
+        networks:
+            - sylius_network
     mailhog:
         # do not use in production!
         image: mailhog/mailhog:latest
+        networks:
+            - sylius_network
+    
+networks:
+  sylius_network:
+    external: true
